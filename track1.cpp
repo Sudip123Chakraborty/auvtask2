@@ -72,7 +72,7 @@ int main()
        Mat dst1, cdst;
        Canny(binary, dst1, 10, 255, 3);
        cvtColor(dst1, cdst, CV_GRAY2BGR);
-      contour(binary);
+      contour(binary);//contour functiion is called
        
         vector<Vec4i> lines;
         HoughLinesP(dst1, lines, 1, CV_PI/180, 50, 50, 10);
@@ -118,7 +118,7 @@ void contour(Mat gray)
         double precTick = ticks;
         ticks = (double) cv::getTickCount(); 
  
-        double dt = (ticks - precTick) / cv::getTickFrequency(); //Current Ticks count - Precious Ticks Count Divided by Frequency
+        double dt = (ticks - precTick) / cv::getTickFrequency(); //
  
    Mat gate_binary(gray.rows,gray.cols,CV_8UC1,Scalar(0));
      Canny(gray, gray, 10, 40, 3);
@@ -200,10 +200,15 @@ void contour(Mat gray)
       
         vector<Vec4i> lines;
         HoughLinesP(dst1, lines, 1, CV_PI/180, 50, 50, 10);
+	
+/*through HoughLinesP we will get many lines containing two endpoints now from these points I can get a lines
+using kalmen filter techniques.*/
+	
+	//Here I have initialize the velocity and the co-ordinates of the points 
         for( size_t i = 0; i < lines.size(); i++ )
         {
           Vec4i l = lines[i];
-          //line( gate_binary, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(144), 3, CV_AA);
+   
           x1[k109]=l[0];
           y1[k109]=l[1];
 		vx[k109]=0;
