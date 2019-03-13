@@ -308,12 +308,9 @@ Matrix4d I, K, A, P, Pp, R;
           //Update Pp
           P = (I - K)*Pp;
           //cout << X << endl << endl;
-          //src.at<Vec3b>(round(y[i]) + 500, round(x[i]) + 500)[0] = 255;
-          RGB.at<Vec3b>(round(X(1, 0)) , round(X(0, 0)))[1] = 255;
-          //img1.at<Vec3b>((round(50*vy[i])) + 700, (round(50*vx[i])+700))[0] = 255;
-          //img1.at<Vec3b>(round(50*X(3, 0))+700, round(50*X(2, 0))+700)[1] = 255;
-          //cout << X(2, 0) << ' ' << X(3, 0) << endl;
-          //cout << x[i] << ' ' << y[i] << ' ' << vx[i] << ' ' << vy[i] << ' ' << endl;
+          
+         src.at<Vec3b>(round(X(1, 0)) , round(X(0, 0)))[1] = 255;
+          
           i++;
           namedWindow("Plot", 0);
           imshow("Plot", src);
